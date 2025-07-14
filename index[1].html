@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malla Curricular Medicina</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+    table { border-collapse: collapse; width: 100%; background: #fff; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #007BFF; color: white; }
+    .aprobada { background-color: #c8e6c9; }
+    .pendiente { background-color: #ffe082; }
+    .no-aplica { background-color: #e0e0e0; }
+    caption { font-size: 1.5em; margin: 10px 0; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Malla Curricular Medicina - UdeA</h1>
+  <p>Materias cursadas están marcadas en <strong>verde</strong>. Las pendientes en <strong>amarillo</strong>.</p>
+
+  <!-- Niveles 1 a 3 existentes -->
+
+  <!-- Niveles 4 a 13 -->
+  <script>
+    const niveles = {
+      4: ["SISTEMA NERVIOSO II", "NUTRICIÓN Y METABOLISMO", "NEUROCIENCIAS II", "NEUROENDOCRINOLOGÍA", "SISTEMA URINARIO", "INMUNOLOGÍA"],
+      5: ["EPIDEMIOLOGÍA CLÍNICA I", "SISTEMA DIGESTIVO", "SANGRE Y SISTEMA INMUNE", "PRÁCTICAS COMUNITARIAS I"],
+      6: ["EPIDEMIOLOGÍA CLÍNICA II", "INFANCIA I", "ADOLESCENCIA I", "ADULTEZ I", "PRÁCTICAS COMUNITARIAS II"],
+      7: ["INFANCIA II", "ADOLESCENCIA II", "ADULTEZ II", "PRÁCTICAS COMUNITARIAS III", "MEDICINA FAMILIAR I"],
+      8: ["VEJEZ I", "ADULTEZ III", "PRÁCTICAS COMUNITARIAS IV", "PRÁCTICA CLÍNICA I", "MEDICINA FAMILIAR II"],
+      9: ["URGENCIAS", "PRÁCTICA CLÍNICA II", "PRÁCTICAS COMUNITARIAS V", "VEJEZ II", "PROYECTO INVESTIGACIÓN"],
+      10: ["PRÁCTICA CLÍNICA III", "SALUD MENTAL", "ROTACIÓN CLÍNICA COMPLEMENTARIA I"],
+      11: ["PRÁCTICA CLÍNICA IV", "ROTACIÓN CLÍNICA COMPLEMENTARIA II"],
+      12: ["INTERNADO I"],
+      13: ["INTERNADO II"]
+    };
+  </script>
+
+  <script>
+    const container = document.body;
+    Object.entries(niveles).forEach(([nivel, materias]) => {
+      const table = document.createElement('table');
+      const caption = document.createElement('caption');
+      caption.textContent = `Nivel ${nivel}`;
+      table.appendChild(caption);
+
+      const header = document.createElement('tr');
+      ['Materia', 'Estado'].forEach(t => {
+        const th = document.createElement('th');
+        th.textContent = t;
+        header.appendChild(th);
+      });
+      table.appendChild(header);
+
+      materias.forEach(nombre => {
+        const row = document.createElement('tr');
+        row.className = 'pendiente';
+        const td1 = document.createElement('td');
+        td1.textContent = nombre;
+        const td2 = document.createElement('td');
+        td2.textContent = 'Pendiente';
+        row.appendChild(td1);
+        row.appendChild(td2);
+        table.appendChild(row);
+      });
+
+      container.appendChild(table);
+    });
+  </script>
+
+</body>
+</html>
